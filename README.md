@@ -1,4 +1,4 @@
-## groupテーブル
+## groupsテーブル
 |column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
@@ -8,25 +8,25 @@ has_many :users, through: :groups_users
 has_many :messages
 has_many :groups_users
 
-## userテーブル
+## usersテーブル
 |column|Type|Options|
 |------|----|-------|
-|Email|text|null:false|
-|password|text|null: false|
-|nickname|text|null: false|
+|Email|string|null:false|
+|password|string|null: false|
+|nickname|string|null: false|
 
 ## Association
 has_many :groups, through: :groups_users
 has_many :messages
 has_many :groups_users
 
-## Messageテーブル
+## Messagesテーブル
 |column|Type|Options|
 |------|----|-------|
 |body|text||
 |image|string||
-|group_id|integer|null: false|
-|user_id|integer|null: false|
+|group_id|integer|null: false, foreign_key: true|
+|user_id|integer|null: false, foreign_key: true|
 
 ## Association
 - belongs_to :user
