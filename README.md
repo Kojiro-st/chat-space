@@ -31,3 +31,14 @@ has_many :group_id, through: :message
 ## Association
 - belongs to :user_id
 - belongs to :group_i
+
+## groups_usersテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|user_id|integer|null: false, foreign_key: true|
+|group_id|integer|null: false, foreign_key: true|
+
+### Association
+- belongs_to :group
+- belongs_to :user
