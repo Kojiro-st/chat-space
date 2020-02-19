@@ -1,11 +1,12 @@
 ## groupテーブル
 |column|Type|Options|
 |------|----|-------|
-|group_name|text|cnull: false|
+|name|string|null: false|
 
 ## Association
-has_many :user_id, through: :groups_users
-has_many :message, groups_users
+has_many :users, through: :groups_users
+has_many :messages
+has_many :groups_users
 
 ## userテーブル
 |column|Type|Options|
@@ -13,11 +14,11 @@ has_many :message, groups_users
 |Email|text|null:false|
 |password|text|null: false|
 |nickname|text|null: false|
-|group_name|text|cnull: false|
 
 ## Association
-has_many :group_id, through: :groups_users
-has_many :message, :group
+has_many :groups, through: :groups_users
+has_many :messages
+has_many :groups_users
 
 ## Messageテーブル
 |column|Type|Options|
@@ -28,8 +29,8 @@ has_many :message, :group
 |user_id|integer|null: false|
 
 ## Association
-- belongs_to :users
-- belongs_to :groups
+- belongs_to :user
+- belongs_to :group
 
 ## groups_usersテーブル
 
